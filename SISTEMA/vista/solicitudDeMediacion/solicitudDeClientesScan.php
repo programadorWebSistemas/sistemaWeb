@@ -2,14 +2,26 @@
 session_start();
 error_reporting(0);
 $varsession=$_SESSION['usu'];
-
 if($varsession==null|| $varsession=''){
    include("EntrarAlSistemaContraseñaMed.php");
     die();
 }
 include("../../funcs/conexion.php");
+
+$ced=$_SESSION['usu'];
+$consulta="SELECT cedula,nombresApellidos,correo FROM registrodeusuario WHERE cedula='$ced'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
+}
+}
 $usuarios="SELECT * FROM archivos";
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -177,7 +189,7 @@ $usuarios="SELECT * FROM archivos";
           <!-- User image -->
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
-				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $_SESSION['usu'] ?></h6></a> 
+				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombresApellidos ?></h6></a> 
           </li>
           <!-- Menu Body -->
          
@@ -219,6 +231,7 @@ $usuarios="SELECT * FROM archivos";
 							<div class="image">
 							  <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image">
 							</div>
+							<!-- seccion de boevenida lateral -->
 							<div class="info">
 								 <a href="#" class="d-block"><h6>Bienvenido: <?php echo $_SESSION['usu'] ?></h6></a>
 							</div>
@@ -369,6 +382,9 @@ $usuarios="SELECT * FROM archivos";
                   <div class="col-2">
                     <input type="text" class="form-control"  name="telefono" id="telefono" placeholder="Telefono"required >
                   </div>
+				  <div class="col-2">
+                    <input type="date" class="form-control"  name="fecha" id="fecha" placeholder="fecha"required >
+                  </div>
                 </div>
               </div>
 			<div class="card-footer">
@@ -387,6 +403,7 @@ $usuarios="SELECT * FROM archivos";
 						<th>NOMBRE Y APELLIDOS</th>
 						<th>DIRECCION</th>
 						<th>TELEFONO</th>
+						<th>FECHA</th>
 						<th>ABRIR</th>
 						<th>ELIMINAR</th>
 					</tr>
@@ -407,6 +424,7 @@ $usuarios="SELECT * FROM archivos";
 							<td><?php echo $row["nomApellidos"];?></td>
 							<td><?php echo $row["direccion"];?></td>
 							<td><?php echo $row["telefono"];?></td>	
+							<td><?php echo $row["fecha"];?></td>	
 									<td>
 									<a href="../../../Public/<?php echo $row['archivo']; ?>" class="btn btn-success" target="_blank">
 	  									<i class="fas fa-sync-alt"></i>	

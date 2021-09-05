@@ -10,6 +10,7 @@ $nomApellidos=$_POST['nomApellidos'];
 $direccion=$_POST['direccion'];
 $correo=$_POST['correo'];
 $telefono=$_POST['telefono'];
+$fecha=$_POST['fecha'];
 
 
 if($_FILES["archivo"]){

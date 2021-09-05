@@ -404,16 +404,17 @@ $correo=$row['correo'];
 							<td><?php echo $row["telefono"];?></td>
 							<td><?php echo $row["fecha"];?></td>
 									<td>
+                    <!-- visualizar el archivo subido-->
 									<a href="../../../Public/<?php echo $row['archivo']; ?>" class="btn btn-success" target="_blank">
 	  									<i class="fas fa-sync-alt"></i>	
-									</a>
-																  
+									</a>						  
 								</td>
+                <!-- eliminar el archivo de la base de datos el archivo subido-->
 								<td>
 									<a href="../../controlador/eliminarArhivosCienteExt.php? expediente=<?php echo $row["expediente"];?>" class="btn btn-danger" >
-									
 									<i class="far fa-trash-alt"></i>
 									</a>
+                </td>
 					</tr>
 						<?php }?>
 	    </table>
