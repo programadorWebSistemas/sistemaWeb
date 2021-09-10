@@ -1,12 +1,25 @@
 <?php
 session_start();
-error_reporting(0);
+
 $varsession=$_SESSION['usu'];
 
 if($varsession==null|| $varsession=''){
-   include("../EntrarAlSistemaContraseñaMed.php");
+   include("../../administradores/EntrarAlSistemaContraseñaMed.php");
     die();
+	}
+include ('../funcs/conexion.php');
+$ced=$_SESSION['usu'];
+$consulta="SELECT nombresApellidos,correo FROM registrodeusuario WHERE cedula='$ced'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($filas>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
 }
+}
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -182,7 +195,7 @@ if($varsession==null|| $varsession=''){
           <!-- User image -->
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
-				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $_SESSION['usu'] ?></h6></a> 
+				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombresApellidos?></h6></a> 
           </li>
           <!-- Menu Body -->
          
@@ -302,7 +315,7 @@ if($varsession==null|| $varsession=''){
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="../../vista/solicitudDeMediacion/solicitudDeMediacion.php" class="nav-link">
+              <a href="../../../solicitudDeMediacion.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nueva Solicitud </p>
                 </a>
@@ -349,7 +362,7 @@ if($varsession==null|| $varsession=''){
 		<div class="col-md-12">
             <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title" _msthash="2764749" _msttexthash="112515">Control Usuario</h3>
+                <h3 class="card-title" _msthash="2764749" _msttexthash="112515"><?php echo $nombresApellidos?></h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
@@ -358,7 +371,7 @@ if($varsession==null|| $varsession=''){
                 <!-- /.card-tools -->
               </div>
               <!-- /.card-header -->
-              <div class="card-body" _msthash="2392117" _msttexthash="415961"> USUARIO </div>
+              <div class="card-body" _msthash="2392117" _msttexthash="415961"> <?php echo $correo?></div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -366,21 +379,6 @@ if($varsession==null|| $varsession=''){
 			
 			
 		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	  </section>

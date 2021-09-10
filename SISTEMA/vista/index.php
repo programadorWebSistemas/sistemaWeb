@@ -1,12 +1,25 @@
 <?php
 session_start();
-error_reporting(0);
+
 $varsession=$_SESSION['usu'];
 
 if($varsession==null|| $varsession=''){
-   include("../../administradores/EntrarAlSistemaContrase%C3%B1aMed.php");
+   include("../../administradores/EntrarAlSistemaContraseñaMed.php");
     die();
+	}
+include ('../funcs/conexion.php');
+$ced=$_SESSION['usu'];
+$consulta="SELECT nombresApellidos,correo FROM registrodeusuario WHERE cedula='$ced'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($filas>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
 }
+}
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -86,88 +99,24 @@ if($varsession==null|| $varsession=''){
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu alertas de mensajes  -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge" _msthash="1104376" _msttexthash="4641">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" _msthidden="13">
-          <a href="#" class="dropdown-item" _msthidden="4">
-            <!-- Message Start -->
-            <div class="media" _msthidden="4">
-              <img src="#" alt="User Avatar" class="img-size-50 mr-3 img-circle" _msthidden="A" _msthiddenattr="1476462" _mstalt="154167">
-              <div class="media-body" _msthidden="3">
-                <h3 class="dropdown-item-title" _msthidden="1"><font _mstmutation="1" _msthash="2028767" _msttexthash="148473" _msthidden="1">
-                  Brad Diesel
-                  </font><span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm" _msthash="1967277" _msttexthash="509925" _msthidden="1">Call me whenever you can...</p>
-                <p class="text-sm text-muted" _msthidden="1"><i class="far fa-clock mr-1"></i><font _mstmutation="1" _msthash="1967394" _msttexthash="126035" _msthidden="1"> 4 Hours Ago</font></p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-			
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" _msthidden="4">
-            <!-- Message Start -->
-            <div class="media" _msthidden="4">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3" _msthidden="A" _msthiddenattr="1476904" _mstalt="154167">
-              <div class="media-body" _msthidden="3">
-                <h3 class="dropdown-item-title" _msthidden="1"><font _mstmutation="1" _msthash="2029443" _msttexthash="150696" _msthidden="1">
-                  John Pierce
-                  </font><span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm" _msthash="1967927" _msttexthash="390208" _msthidden="1">I got your message bro</p>
-                <p class="text-sm text-muted" _msthidden="1"><i class="far fa-clock mr-1"></i><font _mstmutation="1" _msthash="1968044" _msttexthash="126035" _msthidden="1"> 4 Hours Ago</font></p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" _msthidden="4">
-            <!-- Message Start -->
-            <div class="media" _msthidden="4">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3" _msthidden="A" _msthiddenattr="1477346" _mstalt="154167">
-              <div class="media-body" _msthidden="3">
-                <h3 class="dropdown-item-title" _msthidden="1"><font _mstmutation="1" _msthash="2030119" _msttexthash="233610" _msthidden="1">
-                  Nora Silvester
-                  </font><span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm" _msthash="1968577" _msttexthash="383435" _msthidden="1">The subject goes here</p>
-                <p class="text-sm text-muted" _msthidden="1"><i class="far fa-clock mr-1"></i><font _mstmutation="1" _msthash="1968694" _msttexthash="126035" _msthidden="1"> 4 Hours Ago</font></p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer" _msthash="1058473" _msttexthash="248742" _msthidden="1">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
+   
+     
+      <!-- menu de notificaciones-->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge" _msthash="1104922" _msttexthash="9971">15</span>
+         <!-- sistema de notificaciones y numero-->
+         
+      
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" _msthidden="8">
-          <span class="dropdown-item dropdown-header" _msthash="1217229" _msttexthash="279942" _msthidden="1">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" _msthidden="2">
-            <i class="fas fa-envelope mr-2"></i><font _mstmutation="1" _msthash="1058525" _msttexthash="204737" _msthidden="1"> 4 new messages
-            </font><span class="float-right text-muted text-sm" _msthash="1425593" _msttexthash="59007" _msthidden="1">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" _msthidden="2">
-            <i class="fas fa-users mr-2"></i><font _mstmutation="1" _msthash="1058759" _msttexthash="294593" _msthidden="1"> 8 friend requests
-            </font><span class="float-right text-muted text-sm" _msthash="1426009" _msttexthash="90207" _msthidden="1">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" _msthidden="2">
-            <i class="fas fa-file mr-2"></i><font _mstmutation="1" _msthash="1058993" _msttexthash="186329" _msthidden="1"> 3 new reports
-            </font><span class="float-right text-muted text-sm" _msthash="1426425" _msttexthash="58474" _msthidden="1">2 days</span>
-          </a>
+          <!-- sistema de notificaciones cuerpo-->
+
+
+
+          
+         
+        
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer" _msthash="1059227" _msttexthash="411827" _msthidden="1">See All Notifications</a>
         </div>
@@ -182,7 +131,7 @@ if($varsession==null|| $varsession=''){
           <!-- User image -->
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
-				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $_SESSION['usu'] ?></h6></a> 
+				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombresApellidos ?></h6></a> 
           </li>
           <!-- Menu Body -->
          
@@ -302,7 +251,7 @@ if($varsession==null|| $varsession=''){
 								   </a>
 								   <ul class="nav nav-treeview">
 								    <li class="nav-item">
-								    <a href="solicitudDeMediacion/solicitudDeMediacion.php" class="nav-link">
+								     <a href="../../solicitudDeMediacion.php" class="nav-link">
 									  <i class="far fa-circle nav-icon"></i>
 									  <p>Nueva Solicitud </p>
 									  </a>
@@ -314,7 +263,7 @@ if($varsession==null|| $varsession=''){
 									    </a>
 								   </li>
 
-                   <li class="nav-item">
+                   					<li class="nav-item">
 								      <a href="solicitudDeMediacion/solicitudDeClientesScan.php" class="nav-link">
 									    <i class="far fa-circle nav-icon"></i>
 									    <p>Solicitudes Escaneadas</p>
@@ -324,38 +273,56 @@ if($varsession==null|| $varsession=''){
 							  </li>
 							  </ul>
 							</nav>
-							</div>
-
+						
+					  </div>
 				</aside>
 				</div>
 
-				 <!-- Content Wrapper. Contains page content -->
-			  <div class="content-wrapper">
-				<!-- Content Header (Page header) -->
-				<div class="content-header">
-				  <div class="container-fluid">
-					<div class="row mb-2">
-					</div><!-- /.row -->
-				  </div><!-- /.container-fluid -->
-				</div>
-				<!-- /.content-header -->
+				 
+	 <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          
+         
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-				<!-- Main content -->
-				<section class="content">
-					
+    <!-- Main content -->
+    <section class="content">
+		
+		<section class="content">
+		<div class="row" id="contenido_principal">
+		<div class="col-md-12">
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title" _msthash="2764749" _msttexthash="112515"><?php echo $nombresApellidos ?></h3>
 
-
-
-
-
-				  </section>
-				</div>
-
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" _msthash="2392117" _msttexthash="415961"> <?php echo $correo ?></div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+			
+			
+		</div>
+		
+	  </section>
+	  </section>
+	</div>
+	</body>
 </html>
-
-
-	
-
 
 
     <!-- /.content -->
@@ -416,15 +383,9 @@ if($varsession==null|| $varsession=''){
 		<script src="../plantilla/dist/js/demo.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<script src="../plantilla/dist/js/pages/dashboard.js"></script>
+			  <script>
+			  function cargar_contenido(contenedor,contenido){
+			  $("#"+contenedor).load(contenido);
+			  }
 			  
-			
-	
-	
-         
-    
- 
-
-		
-		
- 
-
+			  </script>

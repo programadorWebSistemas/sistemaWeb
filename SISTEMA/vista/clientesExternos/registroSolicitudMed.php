@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 error_reporting(0);
@@ -7,12 +9,12 @@ if($varsession==null|| $varsession=''){
    include("inicioSesionCliente.php");
     die();
 	}
-include ('../funcs/conexion.php');
+include ('../../../SISTEMA/funcs/conexion.php');
 $ced=$_SESSION['usu'];
 $consulta="SELECT nombres,apellidos,correo FROM registroclientes WHERE cedula='$ced'";
 $resultado=mysqli_query($conexion,$consulta);
 $filas=mysqli_num_rows($resultado);
-if($resultado>0){
+if($filas>0){
 while ($row=$resultado->fetch_array()){
 $nombres=$row['nombres'];
 $apellidos=$row['apellidos'];
@@ -24,7 +26,7 @@ $correo=$row['correo'];
 
 <!DOCTYPE html>
 <html lang="en">
-	<a href="../funcs/conexion.php"
+	
 <head>
 	
   <meta charset="utf-8">
@@ -213,7 +215,7 @@ $correo=$row['correo'];
           <!-- User image -->
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
-				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombres, $apellidos ?></h6></a> 
+				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombres, $apellidos?></h6></a> 
           </li>
           <!-- Menu Body -->
          

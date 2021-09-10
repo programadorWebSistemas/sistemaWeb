@@ -16,6 +16,7 @@ while ($row=$resultado->fetch_array()){
 $nombres=$row['nombres'];
 $apellidos=$row['apellidos'];
 $correo=$row['correo'];
+$n=$nombres;
 }
 }
 ?>

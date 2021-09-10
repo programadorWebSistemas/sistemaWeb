@@ -43,7 +43,7 @@ session_start();
                             </div>
                             
                             <div class="btn-exit-system">
-                                <a href="#">Salir del  Sistema</a>
+                                <a href="../index.php">Salir del  Sistema</a>
 								
                                 
                             </div>
@@ -94,14 +94,14 @@ session_start();
       <form class="form-horizontal" action="validarUsuario.php" method="POST">
         <div class="form-group">
             
-          <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
+          <label for="inputEmail3" class="col-sm-2 control-label">Cedula</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Ingrese su numero de cedula" required>
           </div>
         </div>
         <div class="form-group">
             
-          <label for="inputEmail3" class="col-sm-2 control-label">Cedula</label>
+          <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
           <div class="col-sm-10">
             <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese su Correo" required>
           </div>

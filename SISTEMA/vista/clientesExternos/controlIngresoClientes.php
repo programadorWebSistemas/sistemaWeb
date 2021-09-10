@@ -1,5 +1,4 @@
-
- <!--<link rel="stylesheet" href="../vista/clientes/inicioSesionCliente.php">
+<title>mediacion</title>
 <?php
 
 include'../../funcs/conexion.php';
@@ -37,8 +36,7 @@ $errors=array();
             $resultado=mysqli_query($conexion,$consulta);
 	
             if ($resultado){
-                
-            include 'inicioSesionCliente.php';
+                 header ("location: inicioSesionCliente.php");
         
     } else{
         
@@ -48,25 +46,4 @@ $errors=array();
 
 }
 
-    
-    
-    
-    
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ?>

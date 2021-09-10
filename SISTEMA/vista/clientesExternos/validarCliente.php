@@ -1,4 +1,3 @@
-<!--<link rel="stylesheet" href="">-->
 <?php
 $cedula=$_POST['cedula'];
 $correo=$_POST['correo'];
@@ -21,6 +20,4 @@ else{
     
     include("inicioSesionCliente.php");
 }
-
-
 ?>

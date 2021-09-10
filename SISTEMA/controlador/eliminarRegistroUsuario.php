@@ -1,4 +1,4 @@
-
+<script src=""></script>
 <?php
 include ("../funcs/conexion.php");
 	$cedula=trim($_GET ["cedula"]);

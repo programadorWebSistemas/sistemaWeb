@@ -307,7 +307,7 @@ $usuarios="SELECT * FROM archivos";
 								</a>
 								<ul class="nav nav-treeview">
 								  <li class="nav-item">
-								  <a href="solicitudDeMediacion.php" class="nav-link">
+								  <a href="../../../solicitudDeMediacion.php" class="nav-link">
 									  <i class="far fa-circle nav-icon"></i>
 									  <p>Nueva Solicitud </p>
 									</a>
@@ -496,5 +496,5 @@ $usuarios="SELECT * FROM archivos";
 		<script src="../../plantilla/dist/js/demo.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<script src="../../plantilla/dist/js/pages/dashboard.js"></script>
-			  <script>
-         <!-- jQuery V3.4.1 -->
+			
+        

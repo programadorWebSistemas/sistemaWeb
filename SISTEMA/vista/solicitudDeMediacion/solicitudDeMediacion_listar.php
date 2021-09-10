@@ -2,14 +2,23 @@
 session_start();
 error_reporting(0);
 $varsession=$_SESSION['usu'];
-
 if($varsession==null|| $varsession=''){
    include("EntrarAlSistemaContraseñaMed.php");
     die();
 }
 include("../../funcs/conexion.php");
-$usuarios="SELECT * FROM solicitud_mediacion";
 
+$ced=$_SESSION['usu'];
+$consulta="SELECT cedula,nombresApellidos,correo FROM registrodeusuario WHERE cedula='$ced'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
+}
+}
+$usuarios="SELECT * FROM solicitud_mediacion";
 
 ?>
 
@@ -185,14 +194,14 @@ $usuarios="SELECT * FROM solicitud_mediacion";
           <!-- User image -->
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
-				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $_SESSION['usu'] ?></h6></a> 
+				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombresApellidos ?></h6></a> 
           </li>
           <!-- Menu Body -->
          
           <!-- Menu Footer-->
           <li class="user-footer" _msthidden="2">
             <a href="#" class="btn btn-default btn-flat" _msthash="1257347" _msttexthash="94315" _msthidden="1">Perfil</a>
-            <a href="../../controlador/cerrarsession.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
+            <a href="../../../administradores/cerrarsession.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
           </li>
         </ul>
       </li>
@@ -302,7 +311,7 @@ $usuarios="SELECT * FROM solicitud_mediacion";
 								</a>
 								<ul class="nav nav-treeview">
 								  <li class="nav-item">
-								  <a href="solicitudDeMediacion.php" class="nav-link">
+								  <a href="../../../solicitudDeMediacion.php" class="nav-link">
 									  <i class="far fa-circle nav-icon"></i>
 									  <p>Nueva Solicitud </p>
 									</a>

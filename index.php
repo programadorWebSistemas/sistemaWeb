@@ -81,7 +81,7 @@
                                             <li><a href="">MISION Y VISION </a></li>
 											<li><a href="">BASE LEGAL</a></li>
 											<li><a href="menuMediacion.php">CAUSAS</a></li>
-											<li><a href="">TARIFAS</a></li>
+											<li><a href="tarifas.php">TARIFAS</a></li>
                                             
                                         </ul>
                                     </li>
@@ -90,7 +90,7 @@
                                         <ul class="dropdown">
                                             <li><a href="">MEDIACION </a>
                                             <ul class="dropdown">
-                                        <li><a href="">TRÁMITES </a>
+                                        <li><a href="tramites.php">TRÁMITES </a>
                                         </ul>
                                         
                                         </li>
