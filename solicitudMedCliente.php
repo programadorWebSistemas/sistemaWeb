@@ -105,7 +105,7 @@
                 <!-- /.card-tools -->
               </div>
               <!-- /.ingreso sistema clientes -->
-              <a href="SISTEMA/vista/clientesExternos/inicioSesionCliente.php" class="brand-link">
+              <a href="SISTEMA/vista/clientesExternos/seleccionAbogado.php" class="brand-link">
       			<span class="brand-text font-weight-light">Ingrese aqui para enviar la Solicitud de Mediacion firmada y escaneada</span>
     		  </a>
               <!-- /.card-body -->
