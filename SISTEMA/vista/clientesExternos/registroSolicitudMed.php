@@ -22,6 +22,29 @@ $correo=$row['correo'];
 }
 }
 
+// control para juridica
+$ruc=$_SESSION['usu'];
+$consulta="SELECT nombre,correo FROM personajuridica WHERE ruc='$ruc'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombre=$row['nombre'];
+$correo=$row['correo'];
+}
+}
+// control para abogado
+$cedula=$_SESSION['usu'];
+$consulta="SELECT nombresApellidos,correo FROM regabogado WHERE cedula='$cedula'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
+}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -216,13 +239,15 @@ $correo=$row['correo'];
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
 				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombres, $apellidos?></h6></a> 
+              <a href="#" class="d-block"><h6> <?php echo $nombre ?></h6></a>
+              <a href="#" class="d-block"><h6> <?php echo $nombresApellidos ?></h6></a>
           </li>
           <!-- Menu Body -->
          
           <!-- Menu Footer-->
           <li class="user-footer" _msthidden="2">
             <a href="#" class="btn btn-default btn-flat" _msthash="1257347" _msttexthash="94315" _msthidden="1">Perfil</a>
-            <a href="cerrarsession.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
+            <a href="../../controlador/cerrarsessionEspecialesClientes.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
           </li>
         </ul>
       </li>
@@ -343,17 +368,17 @@ $correo=$row['correo'];
                     <input type="text" class="form-control"  name="expediente" id="correo" placeholder="Nro expediente"required >
                   </div>
                   <div class="col-2">
-                   <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Numero de Cedula"  required >
+                   <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Nro de Cedula o Ruc"  required >
                   </div>
                  <div class="col-2">
-                    <input type="text" class="form-control" name="nomApellidos" id="nomApellidos" placeholder="Nombres y Apellidos" required>
+                    <input type="text" class="form-control" name="nomApellidos" id="nomApellidos" placeholder="Nombres completos" required>
                   </div>
                 </div>
               </div>
 			  <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <input type="text" class="form-control"  name="direccion" id="direccion" placeholder="Direccion Domiciliaria"required >
+                    <input type="text" class="form-control"  name="direccion" id="direccion" placeholder="Direccion"required >
                   </div>
 					<div class="col-2">
                     <input type="text" class="form-control"  name="correo" id="correo" placeholder="Correo"required >
@@ -379,8 +404,8 @@ $correo=$row['correo'];
 						<th>ARCHIVO</th>
 						<th>DESCRIPCION</th>
 						<th>NRO EXPEDIENTE</th>
-						<th>CEDULA</th>
-						<th>NOMBRE Y APELLIDOS</th>
+						<th>CEDULA O RUC</th>
+						<th>NOMBRES COMPLETOS</th>
 						<th>DIRECCION</th>
 						<th>TELEFONO</th>
 						<th>FECHA</th>

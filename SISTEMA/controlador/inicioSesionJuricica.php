@@ -13,11 +13,11 @@ session_start();
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../plantilla/plugins/fontawesome-free/css/all.css">
+  <link rel="stylesheet" href="../../SISTEMA/plantilla/plugins/fontawesome-free/css/all.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="../../plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../../SISTEMA/plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../plantilla/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../../SISTEMA/plantilla/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -29,10 +29,10 @@ session_start();
     <div class="card-body">
       <p class="login-box-msg">Ingrese sus datos para iniciar sesion</p>
 
-      <form action="validarCliente.php" method="post">
+      <form action="../controlador/controlValidarJuridica.php" method="get">
 		  
 		  <div class="input-group mb-3">
-          <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Ingrese su numero de cedula">
+          <input type="text" id="ruc" name="ruc" class="form-control" placeholder="Ingrese el RUC de la Empresa"required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@ session_start();
 		  
 		  
         <div class="input-group mb-3">
-          <input type="email" id="correo" name="correo" class="form-control" placeholder="Email">
+          <input type="email" id="correo" name="correo" class="form-control" placeholder="Email"required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -50,7 +50,7 @@ session_start();
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" id="clave" name="clave" class="form-control" placeholder="Password">
+          <input type="password" id="clave" name="clave" class="form-control" placeholder="Password"required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -75,7 +75,7 @@ session_start();
       </p>
      
 		<p class="mb-0">
-        <a href="../../../index.php" class="text-center">Volver al Inicio</a>
+        <a href="../../index.php" class="text-center">Volver al Inicio</a>
 		  
       </p>
     </div>
@@ -90,10 +90,10 @@ session_start();
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="../../plantilla/plugins/jquery/jquery.min.js"></script>
+<script src="../../SISTEMA/plantilla/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../SISTEMA/plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../plantilla/dist/js/adminlte.min.js"></script>
+<script src="../../SISTEMA/plantilla/dist/js/adminlte.min.js"></script>
 </body>
 </html>

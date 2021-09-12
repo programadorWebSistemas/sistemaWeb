@@ -4,7 +4,7 @@ $correo=$_POST['correo'];
 $clave=$_POST['clave'];
 include ('../../funcs/conexion.php');
 
-$consulta="SELECT cedula,correo,nombres clave FROM registroclientes where correo='$correo' and clave='$clave'";
+$consulta="SELECT cedula,correo,nombres clave FROM registroclientes where correo='$correo' and clave='$clave' and cedula='$cedula'";
 $resultado=mysqli_query($conexion,$consulta);
 
 $filas=mysqli_num_rows($resultado);

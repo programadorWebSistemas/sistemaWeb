@@ -16,9 +16,37 @@ while ($row=$resultado->fetch_array()){
 $nombres=$row['nombres'];
 $apellidos=$row['apellidos'];
 $correo=$row['correo'];
-$n=$nombres;
 }
 }
+
+// control para juridica
+$ruc=$_SESSION['usu'];
+$consulta="SELECT nombre,correo FROM personajuridica WHERE ruc='$ruc'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombre=$row['nombre'];
+$correo=$row['correo'];
+}
+}
+
+// control para abogado
+$cedula=$_SESSION['usu'];
+$consulta="SELECT nombresApellidos,correo FROM regabogado WHERE cedula='$cedula'";
+$resultado=mysqli_query($conexion,$consulta);
+$filas=mysqli_num_rows($resultado);
+if($resultado>0){
+while ($row=$resultado->fetch_array()){
+$nombresApellidos=$row['nombresApellidos'];
+$correo=$row['correo'];
+}
+}
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -212,13 +240,15 @@ $n=$nombres;
           <li class="user-header bg-primary" _msthidden="3">
             <img src="../../img/usuarios/admin.png" class="img-circle elevation-2" alt="User Image" _msthidden="A" _msthiddenattr="1155908" _mstalt="128609">
 				<a href="#" class="d-block"><h6>Bienvenido: <?php echo $nombres,$apellidos ?></h6></a> 
+              <a href="#" class="d-block"><h6> <?php echo $nombre ?></h6></a> 
+              <a href="#" class="d-block"><h6> <?php echo $nombresApellidos ?></h6></a> 
           </li>
           <!-- Menu Body -->
          
           <!-- Menu Footer-->
           <li class="user-footer" _msthidden="2">
             <a href="#" class="btn btn-default btn-flat" _msthash="1257347" _msttexthash="94315" _msthidden="1">Perfil</a>
-            <a href="cerrarsession.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
+            <a href="../../controlador/cerrarsessionEspecialesClientes.php" class="btn btn-default btn-flat float-right" _msthash="1257464" _msttexthash="98553" _msthidden="1">Cerrar Sesion</a>
           </li>
         </ul>
       </li>
@@ -314,6 +344,8 @@ $n=$nombres;
 				  
 				  
                 <h3 class="card-title" _msthash="2764749" _msttexthash="112515">Nombre: <?php echo $nombres,$apellidos?> </h3>
+                   <h3 class="card-title" _msthash="2764749" _msttexthash="112515"><?php echo $nombre?> </h3>
+                    <h3 class="card-title" _msthash="2764749" _msttexthash="112515"><?php echo $nombresApellidos?> </h3>
 				  	
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
@@ -345,12 +377,12 @@ $n=$nombres;
 								<thead>
 									<tr class="text-center roboto-medium">
 										<th>Nro EXPEDIENTE</th>
-										<th>CEDULA</th>
+										<th>CEDULA O RUC</th>
 										<th>NOMBRES</th>
 										<th>APELLIDOS</th>
 										<th>CORREO</th>
 										<th>TELEFONO</th>
-										<th>DOMICILIO</th>
+										<th>DIRECCION</th>
 										<th>ABRIR</th>
 									
 									</tr>

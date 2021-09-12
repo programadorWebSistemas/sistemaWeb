@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sistema de Mediacion | Panel de Control</title>
+    <link rel="icon" href="img/core-img/favicon.ico">
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="./SISTEMA/plantilla/plugins/fontawesome-free/css/all.css">
+  
+
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="./SISTEMA/plantilla/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
@@ -27,13 +27,15 @@
   <link rel="stylesheet" href="./SISTEMA/plantilla/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="./SISTEMA/plantilla/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="./SISTEMA/plantilla/build/scss/mixins/_miscellaneous.scss">
+</head>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="SISTEMA/plantilla/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -105,7 +107,7 @@
                 <!-- /.card-tools -->
               </div>
               <!-- /.ingreso sistema clientes -->
-              <a href="SISTEMA/vista/clientesExternos/seleccionAbogado.php" class="brand-link">
+              <a href="SISTEMA/controlador/seleccionDeUsuarioCliente.php" class="brand-link">
       			<span class="brand-text font-weight-light">Ingrese aqui para enviar la Solicitud de Mediacion firmada y escaneada</span>
     		  </a>
               <!-- /.card-body -->

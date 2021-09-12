@@ -101,7 +101,7 @@
 									<li><a href="#">TRÁMITES EXTERNOS</a>
                                         <ul class="dropdown">
 										
-                                            <li><a href="solicitudMedCliente.php">SOLICITUD DE MEDIACIÓN</a></li>
+                                            <li><a href="solicitudDeMediacion.php">SOLICITUD DE MEDIACIÓN</a></li>
 											<li><a href=""></a></li>
 											<li><a href="">CONSULTA DE TRÁMITES</a></li>
 											<li><a href=""></a></li>
